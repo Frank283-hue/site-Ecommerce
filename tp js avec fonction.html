@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF_8">
+    <title>Mon premier programme JavaScript</title>
+</head>
+<body>
+
+    <h1>JavaScript intégré dans HTML</h1>
+    
+    <script>
+        let nRe = Number(prompt("saisir note Reseau"));
+        let nSe = Number(prompt("saisir note securite"));
+        let nGr = Number(prompt("saisir note GRH"));
+        let nAng = Number(prompt("saisir note anglais"));
+        let nFr = Number(prompt("saisir note Francais"));
+        let nPy = Number(prompt("saisir nPython"));
+        const cRe = 3;
+        const cFr = 2;
+        const cGr = 2;
+        const cAng = 1;
+        const cSe = 4;
+        const cPy = 3;
+      /*  let pt = (pSe+pRe+pAng+pFr+pGr+pPy);
+        let ct = (cRe+cAng+cFr+cSe+cGr+cPy);
+    */
+       // let moyenne = (pt/ct);
+
+        function calculerP(nRe,cRe){
+           return nRe*cRe ;
+        }
+            let pRe = calculerP(nRe, cRe);
+            console.log('pondere de reseau' +pRe);
+            let pSe = calculerP(nSe, cSe);
+            console.log('pondere de securite' +pSe);
+            let pGr = calculerP(nGr, cGr);
+            console.log('pondere de GRH' +pGr);
+            let pAng = calculerP(nAng, cAng);
+            console.log('pondere de anglais' +pAng);
+            let pFr = calculerP(nFr, cFr);
+            console.log('pondere de francais' +pFr);
+            let pPy = calculerP(nPy, cPy);
+             console.log('pondere de python' +pPy);
+       
+        let totalp = pRe+pSe+pFr+pGr+pAng+pPy;
+        console.log("Total pondere:" +totalp);
+        let totalc = cRe+cAng+cFr+cSe+cGr+cPy;
+        let moyen = totalp/totalc;
+        alert("Moyenne:" + moyen);
+         </script>
+01
+</body>
+</html>  
+
+
+

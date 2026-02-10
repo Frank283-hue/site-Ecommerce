@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1>saisissez la note</h1>
+<input type="number" id="note">
+<button id="btn">ajouter la note</button>
+
+<p id="resultat"></p>
+    
+<script>
+document.getElementById("btn").onclick = function() {
+    let note= document.getElementById("note").value ; 
+    let resultat= document.getElementById("resultat");
+
+
+
+    if (note >= 10) {     
+        resultat.textContent = "Admis";
+    } else{
+        resultat.textContent = "Ajourne";
+    } 
+    
+
+    };
+    
+    
+    
+
+
+
+
+    /*
+    let a = prompt("enter a number :");
+    alert(a);
+    let b= document.getElementById("note");
+    b.textContent = a; */
+</script>
+
+</body>
+</html>

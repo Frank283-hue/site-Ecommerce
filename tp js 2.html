@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<ul id="liste"></ul>
+    <script>
+    let a = Number(prompt("saisir un nombre :"));
+    let liste = document.getElementById("liste");
+    alert("vous venez d'entrer:" + a);
+         
+    for (let i = 1; i <=a; i++) {
+        let note = prompt("saisir la note" + i ) ;
+        alert(+i+ " la note saisie est : " +note);
+        let li = document.createElement("li");
+        li.textContent= ("note "+i+ "est : "+note);
+        liste.appendChild(li);
+
+    }
+    
+</script>
+
+    
+</body>
+</html>

@@ -1,0 +1,88 @@
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class ProgrammeProfesseurs extends JFrame {
+
+    JTextField txtNom, txtSpecialite;
+    JComboBox<String> comboHeure;
+    JTable table;
+    DefaultTableModel model;
+
+    public ProgrammeProfesseurs() {
+        setTitle("Programme des Professeurs");
+        setSize(700, 400);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        // ===== Panel formulaire =====
+        JPanel panelForm = new JPanel(new GridLayout(4, 2, 10, 10));
+
+        txtNom = new JTextField();
+        txtSpecialite = new JTextField();
+
+        comboHeure = new JComboBox<>(new String[]{
+                "08h - 10h",
+                "10h - 12h",
+                "14h - 16h",
+                "16h - 18h"
+        });
+
+        JButton btnAjouter = new JButton("Ajouter au programme");
+
+        panelForm.add(new JLabel("Nom et Prénom :"));
+        panelForm.add(txtNom);
+        panelForm.add(new JLabel("Heure disponible :"));
+        panelForm.add(comboHeure);
+        panelForm.add(new JLabel("Spécialité :"));
+        panelForm.add(txtSpecialite);
+        panelForm.add(new JLabel());
+        panelForm.add(btnAjouter);
+
+        // ===== Tableau =====
+        model = new DefaultTableModel(
+                new String[]{"Nom & Prénom", "Heure", "Spécialité"}, 0
+        );
+        table = new JTable(model);
+        JScrollPane scrollPane = new JScrollPane(table);
+
+        // ===== Bouton Export =====
+        JButton btnExporter = new JButton("Exporter le programme");
+
+        // ===== Actions =====
+        btnAjouter.addActionListener(e -> {
+            String nom = txtNom.getText();
+            String heure = comboHeure.getSelectedItem().toString();
+            String specialite = txtSpecialite.getText();
+
+            if (nom.isEmpty() || specialite.isEmpty()) {
+                JOptionPane.showMessageDialog(this,
+                        "Veuillez remplir tous les champs !");
+            } else {
+                model.addRow(new Object[]{nom, heure, specialite});
+                txtNom.setText("");
+                txtSpecialite.setText("");
+            }
+        });
+
+        btnExporter.addActionListener(e -> exporterProgramme());
+
+        // ===== Layout principal =====
+        setLayout(new BorderLayout());
+        add(panelForm, BorderLayout.NORTH);
+        add(scrollPane, BorderLayout.CENTER);
+        add(btnExporter, BorderLayout.SOUTH);
+    }
+
+    // ===== Export CSV =====
+    private void exporterProgramme() {
+        try {
+            FileWriter writer = new FileWriter("programme_professeurs.csv");
+
+            for (int i = 0; i < model.getRowCount(); i++) {
+                writer.write(
+                        model.getValueAt(i, 0) + "," +
+                        model.getValueAt(i, 1) + "," +
+                        model.getVal
